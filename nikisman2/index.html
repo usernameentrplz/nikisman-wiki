@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKISMAN.RU | Фан-Вики</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Сброс стилей */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Глобальные настройки для темной темы */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Глубокий темный фон */
+            color: #E0E0E0; /* Светлый текст */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Скрыть прокрутку */
+        }
+
+        /* Тонкий анимированный паттерн фона */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Главный контейнер */
+        .main-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        /* Заголовок NIKISMAN.RU */
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Контейнер для фото */
+        .content {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .content img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%; /* Круглая форма */
+            border: 4px solid #333; /* Тонкая рамка */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Глубокая тень */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .content img:hover {
+            transform: scale(1.05); /* Легкий эффект при наведении */
+        }
+
+        /* Текстовая информация */
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #AAAAAA; /* Приглушенный серый */
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        /* Стили для подписи */
+        .main-p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #E0E0E0;
+            margin-top: 1rem;
+        }
+
+        /* Элемент "В разработке" */
+        .coming-soon-badge {
+            background-color: #333;
+            color: #BBBBBB;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            border: 1px solid #444;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Маленький "загрузочный" индикатор */
+        .coming-soon-badge span.dot {
+            width: 8px;
+            height: 8px;
+            background-color: #888;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 0.05em;
+                margin-bottom: 2rem;
+            }
+            .content img {
+                width: 180px;
+                height: 180px;
+                border-width: 3px;
+            }
+            .main-p {
+                font-size: 1.3rem;
+            }
+            .info p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <header>
+            <h1>NIKISMAN.RU</h1>
+        </header>
+        
+        <section class="content">
+            <!-- Убедитесь, что файл image_9ce6de.jpg находится в той же папке -->
+            <img src="image_9ce6de.jpg" alt="Никита Никисман">
+        </section>
+        
+        <div class="info">
+            <p class="main-p">Скоро тут будет Фан-Вики по ютуберу "Nikis Man"!</p>
+            
+            <p>Мы работаем над созданием самого полного источника информации о ваших любимых моментах, нарезках и шутках Никис Мана.<br>Будьте готовы к запуску!</p>
+
+            <div class="coming-soon-badge">
+                <span class="dot"></span>
+                В разработке
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
