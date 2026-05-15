@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKISMAN.FUN | Фан-Вики</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Сброс стилей */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Глобальные настройки для черной темы */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Строгая нейтральная сетка на фоне */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* Эффект стеклянной карточки */
+        .main-container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 750px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+            margin-bottom: 60px;
+        }
+
+        /* Аватарка с белым свечением */
+        .content {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .content img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #555555; 
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease-in-out;
+            background-color: #000000;
+        }
+
+        .content img:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 45px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Металлический заголовок */
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: linear-gradient(to bottom, #ffffff 0%, #737373 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8));
+        }
+
+        /* Текстовая информация */
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .main-p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .info p:not(.main-p) {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #a3a3a3;
+            font-weight: 300;
+            max-width: 550px;
+        }
+
+        /* Плашка "В разработке" */
+        .coming-soon-badge {
+            background: linear-gradient(145deg, #262626, #0a0a0a);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255,255,255,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .coming-soon-badge span.dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #ffffff;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        /* 3D МЕДАЛЬ */
+        .corner-medal {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle at 35% 35%, #fde047 0%, #ca8a04 50%, #854d0e 100%);
+            border-radius: 50%;
+            border: 5px solid #facc15;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.8), 
+                inset 0 -10px 20px rgba(0, 0, 0, 0.4), 
+                inset 0 5px 15px rgba(255, 255, 255, 0.9),
+                0 0 0 8px rgba(202, 138, 4, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            animation: bounceInMedal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s;
+            transition: transform 0.3s ease;
+        }
+
+        .corner-medal:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Кнопка Play внутри медали */
+        .corner-medal::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            border-left: 30px solid #fff;
+            margin-left: 8px; 
+            margin-bottom: 15px;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.6));
+        }
+
+        /* Лента на медали */
+        .medal-ribbon {
+            position: absolute;
+            bottom: -15px;
+            background: linear-gradient(to right, #78350f, #ea580c, #78350f);
+            color: #fff;
+            padding: 6px 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8), inset 0 1px 2px rgba(255,255,255,0.3);
+            white-space: nowrap;
+            border: 1px solid #fdba74;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceInMedal {
+            0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+            50% { opacity: 1; transform: scale(1.05) rotate(5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; box-shadow: 0 0 5px #ffffff; }
+            50% { opacity: 1; box-shadow: 0 0 15px #ffffff; }
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .content img { width: 180px; height: 180px; }
+            .corner-medal {
+                width: 100px;
+                height: 100px;
+                bottom: 20px;
+                right: 20px;
+                border-width: 4px;
+            }
+            .corner-medal::before {
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+                border-left: 20px solid #fff;
+                margin-bottom: 10px;
+            }
+            .medal-ribbon {
+                font-size: 0.6rem;
+                padding: 4px 10px;
+                bottom: -10px;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.2rem; }
+            .main-p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <header>
+            <h1>NIKISMAN.FUN</h1>
+        </header>
+        
+        <section class="content">
+            <img src="image_9ce6de.jpg" alt="Никита Никисман">
+        </section>
+        
+        <div class="info">
+            <p class="main-p">Скоро тут будет Фан-Вики по ютуберу "Nikis Man"!</p>
+            
+            <p>Мы работаем над созданием самого полного источника информации о ваших любимых моментах, нарезках и шутках Никис Мэна.<br>Будьте готовы к запуску!</p>
+
+            <div class="coming-soon-badge">
+                <span class="dot"></span>
+                В разработке
+            </div>
+        </div>
+
+    </div>
+
+    <div class="corner-medal">
+        <div class="medal-ribbon">Нас заметил Никис</div>
+    </div>
+
+</body>
+</html>
